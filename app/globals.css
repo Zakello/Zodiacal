@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-background: 245, 240, 255;
+  --color-primary: 75, 0, 130;
+  --color-secondary: 138, 43, 226;
+  --color-text: 51, 51, 51;
+  --color-accent: 147, 112, 219;
+}
+
+body {
+  color: rgb(var(--color-text));
+  background: linear-gradient(135deg, rgb(var(--color-background)), rgb(255, 255, 255));
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair-display), Georgia, 'Times New Roman', Times, serif;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-indigo-400 to-purple-600 text-white font-semibold py-2 px-6 rounded-full shadow-md transition-all duration-300 ease-in-out hover:shadow-lg hover:from-indigo-500 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-50;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6 transition-all duration-300 ease-in-out hover:shadow-lg border border-indigo-100;
+  }
+
+  .input {
+    @apply w-full px-4 py-2 text-gray-700 border border-pink-200 rounded-lg focus:outline-none focus:border-pink-400;
+  }
+}
+
+.zodiac-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+}
+
+.zodiac-button {
+  @apply flex flex-col items-center justify-center p-4 rounded-full bg-white border border-pink-200 shadow-sm hover:shadow-md transition-all duration-300 ease-in-out relative overflow-hidden;
+  background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,192,203,0.2));
+}
+
+/* Removed old styles for .zodiac-button */
+
+.zodiac-icon {
+  @apply text-3xl mb-2;
+}
+
+.zodiac-text {
+  @apply text-sm text-gray-700 font-medium;
+}
+
+.star {
+  color: rgba(219, 112, 147, 0.2);
+  position: absolute;
+  z-index: -1;
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.section-title {
+  @apply text-3xl font-bold mb-8 text-center text-pink-600 relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(to right, rgb(var(--color-primary)), rgb(var(--color-secondary)));
+}
+
